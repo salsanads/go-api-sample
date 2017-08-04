@@ -1,14 +1,8 @@
-FROM golang:1.8
+FROM scratch
 
 LABEL maintainer "salsanads@gmail.com"
 
-COPY / /go/src/github.com/salsanads/go-api-sample/
-WORKDIR '/go/src/github.com/salsanads/go-api-sample/'
+ADD main /
+ADD sample.env /.env
 
-RUN go get -u -v github.com/kardianos/govendor
-RUN cp sample.env .env
-
-RUN go-wrapper download
-RUN go-wrapper install
-
-CMD ["go-api-sample"]
+CMD ["/main"]

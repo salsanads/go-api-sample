@@ -32,19 +32,31 @@ go-api-sample
 
 ## How to Run inside Docker
 
-1. Build Image
+1. Install Dependencies
+
+```
+govendor sync
+```
+
+2. Compile `go-api-sample`
+
+```
+CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo cmd/api/main.go
+```
+
+3. Build Image
 
 ```
 docker build . -t salsanads/go-api-sample
 ```
 
-2. Run Image
+4. Run Image
 
 ```
 docker run --net=host -d -p 8080:8080 salsanads/go-api-sample
 ```
 
-3. Access it on the host at [http://127.0.0.1:8080/products](http://127.0.0.1:8080/products)
+5. Access it on the host at [http://127.0.0.1:8080/products](http://127.0.0.1:8080/products)
 
 ## How to Run Test
 

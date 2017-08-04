@@ -1,4 +1,4 @@
-package main_test
+package api_test
 
 import (
   "bytes"
@@ -14,10 +14,10 @@ import (
   _ "github.com/joho/godotenv/autoload"
 )
 
-var a main.App
+var a api.App
 
 func TestMain(m *testing.M) {
-  a = main.App{}
+  a = api.App{}
   a.Initialize(
     os.Getenv("TEST_DB_USERNAME"),
     os.Getenv("TEST_DB_PASSWORD"),
